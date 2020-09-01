@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>ADAM Demo JSF</title>
+	<style type="text/css">
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+th, td {
+	text-align: left;
+	padding: 8px;
+}
+
+tr:nth-child(even) {
+	background-color: #f2f2f2
+}
+
+th {
+	background-color: #4CAF50;
+	color: white;
+}
+</style>
+</h:head>
+
+<h:body>
+
+	<h:form id="navi-form" rendered="#{controllerBean.showFormSelect}">
+		<h:commandButton action="#{controllerBean.showStudents()}"
+			value="STUDENT MANAGEMENT">
+		</h:commandButton>
+		<br />
+		<h:commandButton action="#{controllerBean.showClasses()}"
+			value="CLASS MANAGEMENT">
+		</h:commandButton>
+	</h:form>
+
+	<!-- #####	STUDENT  ##### -->
+	<h:form id="studentForm" rendered="#{controllerBean.showListStudent}">
+		<h:commandButton action="#{controllerBean.showFormCreate()}"
+			onclick="#{studentBean.create()}" value="NEW STUDENT" />
+		<h:dataTable id="studentTable" value="#{studentBean.allStudent}"
+			var="student">
+			<h:column>
+				<f:facet name="header">ID</f:facet>
+				<h:outputText value="#{student.id}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Name</f:facet>
+				<h:inputText value="#{student.sname}" rendered="#{student.editable}" />
+				<h:outputText value="#{student.sname}"
+					rendered="#{not student.editable}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Password</f:facet>
+				<h:inputText value="#{student.spassword}"
+					rendered="#{student.editable}" />
+				<h:outputText value="#{student.spassword}"
+					rendered="#{not student.editable}" />
+			</h:column>
+			<h:column>
+				<h:commandButton value="EDIT"
+					action="#{studentBean.edit(student.id)}"
+					rendered="#{not student.editable}">
+					<f:ajax render="studentForm studentTable" />
+				</h:commandButton>
+				<h:commandButton value="UPDATE"
+					action="#{studentBean.update(student)}"
+					rendered="#{student.editable}">
+					<f:ajax execute="studentForm studentTable" render="studentForm" />
+				</h:commandButton>
+			</h:column>
+			<h:column>
+				<h:commandButton value="CANCEL" action="#{studentBean.cancelEdit(student)}"
+					rendered="#{student.editable}">
+					<f:ajax render="studentForm" />
+				</h:commandButton>
+			</h:column>
+			<h:column>
+				<h:commandButton value="DELTE"
+					action="#{studentBean.delete(student.id)}"
+					onclick="return confirm('Are you sure?')">
+					<f:ajax render="studentForm" />
+				</h:commandButton>
+			</h:column>
+		</h:dataTable>
+		<br />
+		<h:commandButton action="#{controllerBean.backToSelect()}"
+			value="BACK" />
+	</h:form>
+
+	<!-- ==================  create student ========================= -->
+	<h:form id="createStudentForm"
+		rendered="#{controllerBean.createStudent}">
+		<h:panelGrid columns="2" cellspacing="20" border="1">
+			<f:facet name="header">
+				<h:outputText value="CREATE STUDENT" />
+			</f:facet>
+			<h:outputText value="Name" />
+			<h:inputText value="#{newStudent.sname}" />
+
+
+			<h:outputText value="Password" />
+			<h:inputText value="#{newStudent.spassword}" />
+
+			<f:facet name="footer">
+				<h:commandButton action="#{studentBean.save(newStudent)}"
+					value="Save">
+					<f:ajax execute="createStudentForm" render="studentForm" />
+				</h:commandButton>
+			</f:facet>
+
+		</h:panelGrid>
+	</h:form>
+
+
+	<!-- #####===================	STUDENT END =============================##### -->
+
+
+	<!--#####   CLASS   #####-->
+	<h:form id="classForm" rendered="#{controllerBean.showListClass}">
+		<h:commandButton action="#{classBean.create()}" value="NEW CLASS" />
+		<h:dataTable id="classTable" value="#{classBean.allClass}"
+			var="mclass">
+			<h:column>
+				<f:facet name="header">ID</f:facet>
+				<h:outputText value="#{mclass.id}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Name</f:facet>
+				<h:outputText value="#{mclass.className}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Size</f:facet>
+				<h:outputText value="#{mclass.classSize}" />
+			</h:column>
+
+		</h:dataTable>
+		<br />
+		<h:commandButton action="#{controllerBean.backToSelect()}"
+			value="BACK" />
+
+	</h:form>
+	
+	
+	
+	
+	
+	
+	
+	
+
+	<!--##### =======================  CLASS END ======================  #####-->
+
+
+
+
+
+</h:body>
+</html>

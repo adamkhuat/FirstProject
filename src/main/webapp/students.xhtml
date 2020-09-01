@@ -1,0 +1,97 @@
+<!-- <?xml version="1.0" encoding="UTF-8"?> -->
+<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" -->
+<!--         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> -->
+<!-- <html xmlns="http://www.w3.org/1999/xhtml" -->
+<!-- 	xmlns:h="http://java.sun.com/jsf/html" -->
+<!-- 	xmlns:ui="http://java.sun.com/jsf/facelets" -->
+<!-- 	xmlns:f="http://java.sun.com/jsf/core" -->
+<!-- 	xmlns:p="http://primefaces.org/ui"> -->
+
+<!-- <h:head> -->
+<!-- 	<title>Demo JSF</title> -->
+<!-- 	<style type="text/css"> -->
+/* table { */
+/* 	border-collapse: collapse; */
+/* 	width: 100%; */
+/* } */
+
+/* th, td { */
+/* 	text-align: left; */
+/* 	padding: 8px; */
+/* } */
+
+/* tr:nth-child(even) { */
+/* 	background-color: #f2f2f2 */
+/* } */
+
+/* th { */
+/* 	background-color: #4CAF50; */
+/* 	color: white; */
+/* } */
+<!-- </style> -->
+<!-- </h:head> -->
+<!-- <h:body> -->
+
+<!-- 	<ui:composition template="/templates/contents.xhtml"> -->
+
+<!-- 		<ui:define name="body-content"> -->
+<!-- 			<h:form id="studentForm"> -->
+
+<!-- 				<h:commandButton action="#{studentBean.create()}" -->
+<!-- 					value="CREATE STUDENT" /> -->
+
+<!-- 				<h:dataTable id="studentTable" value="#{studentBean.allStudent}" -->
+<!-- 					var="student"> -->
+<!-- 					<h:column> -->
+<!-- 						<f:facet name="header">ID</f:facet> -->
+<!-- 						<h:outputText value="#{student.id}" /> -->
+<!-- 					</h:column> -->
+<!-- 					<h:column> -->
+<!-- 						<f:facet name="header">Name</f:facet> -->
+<!-- 						<h:inputText value="#{student.sname}" -->
+<!-- 							rendered="#{student.editable}" /> -->
+<!-- 						<h:outputText value="#{student.sname}" -->
+<!-- 							rendered="#{not student.editable}" /> -->
+<!-- 					</h:column> -->
+<!-- 					<h:column> -->
+<!-- 						<f:facet name="header">Password</f:facet> -->
+<!-- 						<h:inputText value="#{student.spassword}" -->
+<!-- 							rendered="#{student.editable}" /> -->
+<!-- 						<h:outputText value="#{student.spassword}" -->
+<!-- 							rendered="#{not student.editable}" /> -->
+<!-- 					</h:column> -->
+<!-- 					<h:column> -->
+<!-- <!-- 				    ######	BTN EDIT --> -->
+<!-- 						<h:commandButton action="#{studentBean.edit(student.id)}" -->
+<!-- 							rendered="#{ not student.editable}" value="Edit"> -->
+<!-- 							<p:ajax render="studentForm:studentTable" /> -->
+<!-- 						</h:commandButton> -->
+						
+<!-- <!-- 					#######	BTN SAVE --> -->
+<!-- 						<h:commandButton action="#{studentBean.update(student)}" -->
+<!-- 							value="SAVE" rendered="#{student.editable}"> -->
+<!-- 							<p:ajax execute="@form" render="studentForm:studentTable" /> -->
+<!-- 						</h:commandButton> -->
+<!-- 					</h:column> -->
+<!-- 					<h:column> -->
+<!-- <!-- 					####### BTN CANCLE --> -->
+<!-- 						<h:commandButton action="#{studentBean.cancleEdit(student)}" -->
+<!-- 							value="CANCEL" rendered="#{student.editable}"> -->
+<!-- 							<p:ajax render="studentForm:studentTable" /> -->
+<!-- 						</h:commandButton> -->
+<!-- 					</h:column> -->
+<!-- 					<h:column> -->
+<!-- 						<h:commandButton id="btn-remove" -->
+<!-- 							action="#{studentBean.delete(student.id)}" value="Detele" -->
+<!-- 							onclick="return confirm('Are you sure?')"> -->
+<!-- 							<p:ajax render="studentForm:studentTable" /> -->
+<!-- 						</h:commandButton> -->
+
+<!-- 					</h:column> -->
+<!-- 				</h:dataTable> -->
+
+<!-- 			</h:form> -->
+<!-- 		</ui:define> -->
+<!-- 	</ui:composition> -->
+<!-- </h:body> -->
+<!-- </html> -->
